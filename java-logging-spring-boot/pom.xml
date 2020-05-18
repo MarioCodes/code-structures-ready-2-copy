@@ -6,20 +6,20 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>logging-spring-boot</name>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+
     <properties>
         <!-- General -->
         <java.compiler.version>8</java.compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- maven plugins -->
-        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
-        <maven.shade.version>3.2.1</maven.shade.version>
-
         <!-- Normal Dependency Versions -->
-        <spring.version>5.1.6.RELEASE</spring.version>
-        <spring-boot.version>2.0.0.RELEASE</spring-boot.version>
-
         <lombok.version>1.18.6</lombok.version>
         <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.2.3</logback.version>
@@ -37,50 +37,39 @@
 
 
       <dependencies>
-
         <!-- Spring Boot -->
         <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter</artifactId>
-          <version>${spring-boot.version}</version>
+          <!-- this excludes default logging -->
+          <exclusions>
+              <exclusion>
+                  <groupId>org.springframework.boot</groupId>
+                  <artifactId>spring-boot-starter-logging</artifactId>
+              </exclusion>
+          </exclusions>
+        </dependency>
+
+        <!-- Add Log4j2 dependency -->
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
         <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-web</artifactId>
-          <version>${spring-boot.version}</version>
         </dependency>
 
         <!-- Spring -->
         <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-context</artifactId>
-          <version>${spring.version}</version>
         </dependency>
 
         <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-core</artifactId>
-          <version>${spring.version}</version>
-        </dependency>
-
-        <!-- Logging -->
-        <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-          <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-classic</artifactId>
-          <version>${logback.version}</version>
-        </dependency>
-
-        <dependency>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-core</artifactId>
-          <version>${logback.version}</version>
         </dependency>
 
         <!-- Other dependencies -->
@@ -113,21 +102,12 @@
           <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>${spring-boot.version}</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>repackage</goal>
-                </goals>
-              </execution>
-            </executions>
           </plugin>
 
           <!-- Sets the compiler version -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>${maven.compiler.plugin.version}</version>
             <configuration>
               <source>${java.compiler.version}</source>
               <target>${java.compiler.version}</target>
