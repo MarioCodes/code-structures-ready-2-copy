@@ -27,7 +27,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="es.msanchez.templates.java.spring.boot" level="debug" additivity="false">
+        <Logger name="es.msanchez.structures.java.logging" level="debug" additivity="false">
             <AppenderRef ref="ConsoleAppender"/>
             <AppenderRef ref="FileAppender"/>
         </Logger>
