@@ -1,4 +1,4 @@
-package es.msanchez.templates.java.spring.boot.entity;
+package es.msanchez.structures.java.logging.entity;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

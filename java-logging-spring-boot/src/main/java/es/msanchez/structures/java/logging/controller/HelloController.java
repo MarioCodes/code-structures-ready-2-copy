@@ -1,4 +1,4 @@
-package es.msanchez.templates.java.spring.boot.controller;
+package es.msanchez.structures.java.logging.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

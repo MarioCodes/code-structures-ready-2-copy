@@ -15,7 +15,7 @@
         </Console>
 
         <RollingFile name="FileAppender" fileName="logs/trade-engine.log"
-                     filePattern="logs/trade-engine-%d{yyyy-MM-dd}-%i.log">
+                     filePattern="logs/my-apps-name-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout>
                 <Pattern>${LOG_PATTERN}</Pattern>
             </PatternLayout>
